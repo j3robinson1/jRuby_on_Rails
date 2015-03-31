@@ -4,8 +4,14 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0.rc1'
 
 # Use jdbcsqlite3 as the database for Active Record
-gem 'activerecord-jdbcsqlite3-adapter', '1.3.0.beta1'
-
+platform :jruby do
+  gem 'activerecord-jdbcsqlite3-adapter', '1.3.0.beta1'
+  gem 'jruby-openssl'
+  gem 'therubyrhino', group: :assets
+end
+platform :ruby do
+  gem 'sqlite3'
+end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
 
@@ -14,9 +20,6 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyrhino'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
